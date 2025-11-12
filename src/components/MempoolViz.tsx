@@ -307,19 +307,21 @@ export const MempoolViz: React.FC<MempoolVizProps> = ({ transactions, mempoolSta
           
           {hoveredTx && (
             <div
-              className="absolute z-10 bg-[#2d1f16] border border-[#8B4513] rounded-lg p-3 shadow-xl pointer-events-none"
+              className="absolute z-10 bg-black/95 border-2 border-yellow-400 rounded-lg p-4 shadow-2xl pointer-events-none backdrop-blur-sm"
               style={{
                 left: Math.min(mousePos.x + 10, canvasRef.current!.clientWidth - 250),
                 top: Math.min(mousePos.y + 10, canvasRef.current!.clientHeight - 100),
               }}
             >
-              <div className="text-white text-xs space-y-1">
-                <div className="font-semibold text-yellow-400 flex items-center gap-1">
-                  <DollarSign className="w-3 h-3" />
+              <div className="text-white text-sm space-y-2">
+                <div className="font-bold text-yellow-300 text-base flex items-center gap-2">
+                  <DollarSign className="w-4 h-4" />
                   {hoveredTx.value.toFixed(4)} ETH
                 </div>
-                <div className="text-gray-300">Gas: {hoveredTx.gasPrice.toFixed(2)} Gwei</div>
-                <div className="text-gray-400 truncate max-w-[200px]">
+                <div className="text-cyan-300 font-semibold">
+                  ⚡ Gas: {hoveredTx.gasPrice.toFixed(2)} Gwei
+                </div>
+                <div className="text-white/90 text-xs truncate max-w-[200px] bg-white/10 px-2 py-1 rounded font-mono">
                   {hoveredTx.hash.slice(0, 20)}...
                 </div>
               </div>
